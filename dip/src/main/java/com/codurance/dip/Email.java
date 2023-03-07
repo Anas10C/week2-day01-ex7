@@ -1,6 +1,6 @@
 package com.codurance.dip;
 
-public class Email {
+public class Email implements EmailInterface {
     private final String to;
     private final String subject;
     private final String message;
@@ -11,7 +11,7 @@ public class Email {
         this.message = message;
     }
 
-    public String getTo() {
+    /*public String getTo() {
         return to;
     }
 
@@ -21,5 +21,10 @@ public class Email {
 
     public String getMessage() {
         return message;
+    }*/
+
+    public void send() {
+        System.out.print("To:"+this.to+", Subject: "+this.subject+", Message: "+this.message);
     }
+
 }

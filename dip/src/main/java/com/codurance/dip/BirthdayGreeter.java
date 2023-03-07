@@ -16,12 +16,13 @@ public class BirthdayGreeter {
         employeeRepository.findEmployeesBornOn(today)
                 .stream()
                 .map(employee -> emailFor(employee))
-                .forEach(email -> new EmailSender().send(email));
+                .forEach(email -> email.send());
     }
 
-    private Email emailFor(Employee employee) {
+    private EmailInterface emailFor(Employee employee) {
         String message = String.format("Happy birthday, dear %s!", employee.getFirstName());
-        return new Email(employee.getEmail(), "Happy birthday!", message);
+        EmailInterface email = new Email(employee.getEmail(), "Happy birthday!", message);
+        return email;
     }
 
 }
